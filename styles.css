@@ -4,3 +4,24 @@
     background-color: white;
     outline: 5px solid black;
 }
+
+.square:hover {
+    background-color: black;
+}
+
+.container {
+    margin: auto;
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(16, 50px[col-start]);
+}
+
+.header {
+    margin: auto;
+    width: 50%;
+    font-size: 92px;
+}
+
+body {
+    background-color:rgb(145, 145, 145);
+}
