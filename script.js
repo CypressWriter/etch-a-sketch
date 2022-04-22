@@ -10,3 +10,10 @@ for (let i = 0; i < length; i++) {
         container.appendChild(square);
     }
 }
+
+function blackColor(e) {
+    e.currentTarget.classList.add("black");
+}
+
+const squares = document.querySelectorAll(".square");
+squares.forEach(square => square.addEventListener("mouseover", blackColor));
