@@ -10,12 +10,12 @@
 }
 
 .container {
-    margin: auto;
-    width: 50%;
     display: grid;
-    grid-template-columns: repeat(16, 50px[col-start]);
+    height: 960px;
+    width: 960px;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
 }
-
 .header {
     margin: auto;
     width: 50%;
