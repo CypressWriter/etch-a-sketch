@@ -1,6 +1,8 @@
 let length = 16;
 let canvasSize = 1000;
 
+let state = "black";
+
 container = document.querySelector("div");
 
 for (let i = 0; i < length; i++) {
@@ -13,11 +15,32 @@ for (let i = 0; i < length; i++) {
 }
 
 function blackColor(e) {
+    e.currentTarget.classList.remove("rainbow");
     e.currentTarget.classList.add("black");
+}
+function rainbowColor(e) {
+    e.currentTarget.classList.remove("black");
+    e.currentTarget.classList.add("rainbow");
 }
 
 const squares = document.querySelectorAll(".square");
 squares.forEach(square => square.addEventListener("mouseover", blackColor));
+
+function black() {
+    state = "black";
+    squares.forEach(square => square.removeEventListener("mouseover", rainbowColor));
+    squares.forEach(square => square.addEventListener("mouseover", blackColor));
+}
+function rainbow() {
+    state = "rainbow";
+    squares.forEach(square => square.removeEventListener("mouseover", blackColor));
+    squares.forEach(square => square.addEventListener("mouseover", rainbowColor));
+}
+function gradient() {
+    state = "gradient";
+}
+
+
 
 function reset() {
     do {
@@ -46,7 +69,13 @@ function reset() {
     }
 
     squares = document.querySelectorAll(".square");
-    squares.forEach(square => square.addEventListener("mouseover", blackColor));
+    if (state === "black") {
+        squares.forEach(square => square.addEventListener("mouseover", blackColor));
+    }
+    else if (state === "rainbow") {
+        squares.forEach(square => square.addEventListener("mouseover", rainbowColor));
+    }
+
     
     console.log(length);
 }

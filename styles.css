@@ -8,6 +8,9 @@
 .black {
     background-color: black;
 }
+.rainbow {
+    background-color: rgb(255, 0, 0);
+}
 
 .container {
     display: grid;
