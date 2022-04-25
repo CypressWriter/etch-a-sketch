@@ -24,7 +24,7 @@ function reset() {
         length = prompt("Please enter the size of grid (between 1 and 100)");
     } while (length <= 0 || length > 100);
 
-    const squares = document.querySelectorAll(".square");
+    let squares = document.querySelectorAll(".square");
     squares.forEach(square => square.remove());
 
 
@@ -44,6 +44,9 @@ function reset() {
                 container.appendChild(square);
         }
     }
+
+    squares = document.querySelectorAll(".square");
+    squares.forEach(square => square.addEventListener("mouseover", blackColor));
     
     console.log(length);
 }
