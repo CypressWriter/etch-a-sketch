@@ -3,6 +3,8 @@ let canvasSize = 1000;
 
 let state = "black";
 
+let red, bleue, green;
+
 container = document.querySelector("div");
 
 for (let i = 0; i < length; i++) {
@@ -15,12 +17,15 @@ for (let i = 0; i < length; i++) {
 }
 
 function blackColor(e) {
-    e.currentTarget.classList.remove("rainbow");
-    e.currentTarget.classList.add("black");
+    e.target.style.backgroundColor = `rgb(0, 0, 0)`
 }
 function rainbowColor(e) {
     e.currentTarget.classList.remove("black");
-    e.currentTarget.classList.add("rainbow");
+    red = Math.floor(Math.random() * 256);
+    blue = Math.floor(Math.random() * 256);
+    green = Math.floor(Math.random() * 256);
+
+    e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`
 }
 
 const squares = document.querySelectorAll(".square");
