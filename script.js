@@ -5,6 +5,8 @@ let state = "black";
 
 let red, bleue, green;
 
+let grad = 255;
+
 container = document.querySelector("div");
 
 for (let i = 0; i < length; i++) {
@@ -28,21 +30,32 @@ function rainbowColor(e) {
     e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`
 }
 
+function gradientColor(e) {
+    grad -= 25;
+    e.target.style.backgroundColor = `rgb(${grad}, ${grad}, ${grad})`
+}
+
 const squares = document.querySelectorAll(".square");
 squares.forEach(square => square.addEventListener("mouseover", blackColor));
 
 function black() {
     state = "black";
     squares.forEach(square => square.removeEventListener("mouseover", rainbowColor));
+    squares.forEach(square => square.removeEventListener("mouseover", gradientColor));
     squares.forEach(square => square.addEventListener("mouseover", blackColor));
 }
 function rainbow() {
     state = "rainbow";
     squares.forEach(square => square.removeEventListener("mouseover", blackColor));
+    squares.forEach(square => square.removeEventListener("mouseover", gradientColor));
     squares.forEach(square => square.addEventListener("mouseover", rainbowColor));
 }
 function gradient() {
     state = "gradient";
+    grad = 255;
+    squares.forEach(square => square.removeEventListener("mouseover", blackColor));
+    squares.forEach(square => square.removeEventListener("mouseover", rainbowColor));
+    squares.forEach(square => square.addEventListener("mouseover", gradientColor));
 }
 
 
@@ -79,6 +92,9 @@ function reset() {
     }
     else if (state === "rainbow") {
         squares.forEach(square => square.addEventListener("mouseover", rainbowColor));
+    }
+    else if (state === "gradient") {
+        squares.forEach(square => square.addEventListener("mouseover", gradientColor));
     }
 
     
