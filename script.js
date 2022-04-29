@@ -35,7 +35,7 @@ function gradientColor(e) {
     e.target.style.backgroundColor = `rgb(${grad}, ${grad}, ${grad})`
 }
 
-const squares = document.querySelectorAll(".square");
+let squares = document.querySelectorAll(".square");
 squares.forEach(square => square.addEventListener("mouseover", blackColor));
 
 function black() {
@@ -65,7 +65,7 @@ function reset() {
         length = prompt("Please enter the size of grid (between 1 and 100)");
     } while (length <= 0 || length > 100);
 
-    let squares = document.querySelectorAll(".square");
+    //let squares = document.querySelectorAll(".square");
     squares.forEach(square => square.remove());
 
 
@@ -87,16 +87,22 @@ function reset() {
     }
 
     squares = document.querySelectorAll(".square");
+
     if (state === "black") {
+        squares.forEach(square => square.removeEventListener("mouseover", rainbowColor));
+        squares.forEach(square => square.removeEventListener("mouseover", gradientColor));
         squares.forEach(square => square.addEventListener("mouseover", blackColor));
     }
     else if (state === "rainbow") {
+        squares.forEach(square => square.removeEventListener("mouseover", blackColor));
+        squares.forEach(square => square.removeEventListener("mouseover", gradientColor));
         squares.forEach(square => square.addEventListener("mouseover", rainbowColor));
     }
     else if (state === "gradient") {
+        squares.forEach(square => square.removeEventListener("mouseover", blackColor));
+        squares.forEach(square => square.removeEventListener("mouseover", rainbowColor));
         squares.forEach(square => square.addEventListener("mouseover", gradientColor));
     }
-
     
     console.log(length);
 }
